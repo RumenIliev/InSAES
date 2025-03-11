@@ -14,7 +14,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 model = tf.keras.models.load_model("InSAES_model.h5")
 
 
-# Extracting features of the Audio fail
+# Extracting features from the Audio file
 def extract_features(audio_file_path):
 
     audio, sr = librosa.load(audio_file_path, duration=3)
@@ -35,7 +35,7 @@ def analyse_emotion(audio_file_path):
     return emotions, predict[0] * 100
 
 
-# Visualising waveform
+# Visualizing waveform
 def plot_waveform(audio_file_path, y):
 
     audio, sr = librosa.load(audio_file_path, duration=3)
@@ -125,7 +125,7 @@ class InSAES:
         self.history_listbox.pack(fill='both', padx=10, pady=(0, 10))
         self.history_listbox.bind('<Double-1>', self.on_history_select)
 
-        # Instructions
+        # Instructions field
         instructions = ttk.Label(menu, text="Instructions:", font=("Arial", 12, "bold", "italic"))
         instructions.pack(pady=(15, 0))
 
@@ -159,7 +159,7 @@ class InSAES:
 
         if file_path:
             self.show_loading()
-            delay = random.randint(2000, 9000)  # Thinking simulation
+            delay = random.randint(2000, 9000)
             self.in_saes.after(delay, lambda: self.process_audio_file(file_path))
 
     def show_loading(self):
@@ -288,3 +288,6 @@ if __name__ == "__main__":
     in_saes_main = tk.Tk()
     app = InSAES(in_saes_main)
     in_saes_main.mainloop()
+
+
+# password: insaes_2001261038
